@@ -1,14 +1,14 @@
-WIN32_DIR	= xtensa-toolchain-win32
-OSX_DIR = xtensa-toolchain-osx
-LINUX32_DIR = xtensa-toolchain-linux32
-LINUX64_DIR = xtensa-toolchain-linux64
+WIN32_DIR	= xtensa-toolchain
+OSX_DIR = xtensa-toolchain
+LINUX32_DIR = xtensa-toolchain
+LINUX64_DIR = xtensa-toolchain
 
-WIN32_TC = $(addprefix $(WIN32_DIR),.zip)
-OSX_TC = $(addprefix $(OSX_DIR),.tar.xz)
-LINUX32_TC = $(addprefix $(LINUX32_DIR),.tar.xz)
-LINUX64_TC = $(addprefix $(LINUX64_DIR),.tar.xz)
+WIN32_TC = $(addprefix $(WIN32_DIR),-mk-win32.zip)
+OSX_TC = $(addprefix $(OSX_DIR),-mk-osx.tar.xz)
+LINUX32_TC = $(addprefix $(LINUX32_DIR),-mk-linux32.tar.xz)
+LINUX64_TC = $(addprefix $(LINUX64_DIR),-mk-linux64.tar.xz)
 
-all: win32	osx	linux32 linux64
+all: win32 osx linux32 linux64
 
 clean:
 	rm -rf $(WIN32_DIR)
@@ -18,6 +18,7 @@ clean:
 
 win32:
 	@echo "Generating the Xtensa Toolchain of Win32"
+	rm -rf $(WIN32_DIR)
 	mkdir -p $(WIN32_DIR)/bin
 	cp -R ../doc $(WIN32_DIR)
 	unzip -ju -d $(WIN32_DIR)/bin ../dist/esptool-*-win*.zip
@@ -27,6 +28,7 @@ win32:
 
 osx:
 	@echo "Generating the Xtensa Toolchain of OSX"
+	rm -rf $(OSX_DIR)
 	mkdir -p $(OSX_DIR)/bin
 	cp -R ../doc $(OSX_DIR)
 	tar zxf ../dist/esptool-*-osx*.tar.gz -C $(OSX_DIR)/bin --strip-components=1 
@@ -36,6 +38,7 @@ osx:
 
 linux32:
 	@echo "Generating the Xtensa Toolchain of Linux32"
+	rm -rf $(LINUX32_DIR)
 	mkdir -p $(LINUX32_DIR)/bin
 	cp -R ../doc $(LINUX32_DIR)
 	tar zxf ../dist/esptool-*-linux32*.tar.gz -C $(LINUX32_DIR)/bin --strip-components=1 
@@ -45,6 +48,7 @@ linux32:
 
 linux64:
 	@echo "Generating the Xtensa Toolchain of Linux64"
+	rm -rf $(LINUX64_DIR)
 	mkdir -p $(LINUX64_DIR)/bin
 	cp -R ../doc $(LINUX64_DIR)
 	tar zxf ../dist/esptool-*-linux64*.tar.gz -C $(LINUX64_DIR)/bin --strip-components=1 
