@@ -101,6 +101,13 @@ def identify_platform():
         sys_name = 'Windows'
     return arduino_platform_names[sys_name][bits]
 
+def move_p(src, dst):
+    try:
+        shutil.move(src, dst)
+    except shutil.Error as exc:
+        if exc.errno == errno.EEXIST:
+            raise
+
 if __name__ == '__main__':
     print('Platform: {0}'.format(identify_platform()))
     tools_to_download = load_tools_list(dist_dir + '/package_list.json', identify_platform())
@@ -109,16 +116,16 @@ if __name__ == '__main__':
         get_tool(tool)
 
     if os.path.isfile('esptool/esptool'):
-        shutil.move('esptool/esptool', 'bin/')
+        move_p('esptool/esptool', 'bin/')
 
-    if os.path.isfile('esptool/esptool'):
-        shutil.move('esptool/esptool.exe', 'bin/')
-
-    if os.path.isfile('mkspiffs/mkspiffs'):
-        shutil.move('mkspiffs/mkspiffs', 'bin/')
+    if os.path.isfile('esptool/esptool.exe'):
+        move_p('esptool/esptool.exe', 'bin/')
 
     if os.path.isfile('mkspiffs/mkspiffs'):
-        shutil.move('mkspiffs/mkspiffs.exe', 'bin/')
+        move_p('mkspiffs/mkspiffs', 'bin/')
+
+    if os.path.isfile('mkspiffs/mkspiffs.exe'):
+        move_p('mkspiffs/mkspiffs.exe', 'bin/')
 
     shutil.rmtree('mkspiffs')
     shutil.rmtree('esptool')
