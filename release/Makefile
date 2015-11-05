@@ -20,6 +20,7 @@ win32:
 	@echo "Generating the Xtensa Toolchain of Win32"
 	rm -rf $(WIN32_DIR)
 	mkdir -p $(WIN32_DIR)/bin
+	cp ../espota.py $(WIN32_DIR)/bin
 	cp -R ../doc $(WIN32_DIR)
 	unzip -ju -d $(WIN32_DIR)/bin ../dist/esptool-*-win*.zip
 	unzip -ju -d $(WIN32_DIR)/bin ../dist/mkspiffs-*-win*.zip
@@ -30,6 +31,7 @@ osx:
 	@echo "Generating the Xtensa Toolchain of OSX"
 	rm -rf $(OSX_DIR)
 	mkdir -p $(OSX_DIR)/bin
+	cp ../espota.py $(OSX_DIR)/bin
 	cp -R ../doc $(OSX_DIR)
 	tar zxf ../dist/esptool-*-osx*.tar.gz -C $(OSX_DIR)/bin --strip-components=1 
 	tar zxf ../dist/mkspiffs-*-osx*.tar.gz -C $(OSX_DIR)/bin --strip-components=1 
@@ -40,6 +42,7 @@ linux32:
 	@echo "Generating the Xtensa Toolchain of Linux32"
 	rm -rf $(LINUX32_DIR)
 	mkdir -p $(LINUX32_DIR)/bin
+	cp ../espota.py $(LINUX32_DIR)/bin
 	cp -R ../doc $(LINUX32_DIR)
 	tar zxf ../dist/esptool-*-linux32*.tar.gz -C $(LINUX32_DIR)/bin --strip-components=1 
 	tar zxf ../dist/mkspiffs-*-linux32*.tar.gz -C $(LINUX32_DIR)/bin --strip-components=1 
@@ -50,6 +53,7 @@ linux64:
 	@echo "Generating the Xtensa Toolchain of Linux64"
 	rm -rf $(LINUX64_DIR)
 	mkdir -p $(LINUX64_DIR)/bin
+	cp ../espota.py $(LINUX64_DIR)/bin
 	cp -R ../doc $(LINUX64_DIR)
 	tar zxf ../dist/esptool-*-linux64*.tar.gz -C $(LINUX64_DIR)/bin --strip-components=1 
 	tar zxf ../dist/mkspiffs-*-linux64*.tar.gz -C $(LINUX64_DIR)/bin --strip-components=1 
