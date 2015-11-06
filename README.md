@@ -17,8 +17,17 @@ Xtensa lx106 architecture toolchain, based on following projects:
 ```
 $ git clone git://github.com/icamgo/xtensa-toolchain.git xtensa-toolchain
 $ cd xtensa-toolchain/release
-$ make win32					# build the toolchain used in windows
 $ make linux32					# build the toolchain used in 32bit linux
 $ make linux64					# build the toolchain used in 64bit linux
 $ make osx						# build the toolchain used in Mac OS X
+```
+
+For windows:
+
+```
+$ git clone git://github.com/icamgo/xtensa-toolchain.git xtensa-toolchain
+$ cd xtensa-toolchain
+$ ./gen.py						# download the win32 package
+$ cd release
+$ make win32					# build the toolchain used in windows
 ```

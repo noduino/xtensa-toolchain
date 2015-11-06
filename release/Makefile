@@ -25,7 +25,7 @@ win32:
 	unzip -ju -d $(WIN32_DIR)/bin ../dist/esptool-*-win*.zip
 	unzip -ju -d $(WIN32_DIR)/bin ../dist/mkspiffs-*-win*.zip
 	tar zxf ../dist/win32-xtensa-*.tar.gz -C $(WIN32_DIR)
-	zip -9r $(WIN32_TC) $(WIN32_DIR)
+	zip -9qr $(WIN32_TC) $(WIN32_DIR)
 
 osx:
 	@echo "Generating the Xtensa Toolchain of OSX"
