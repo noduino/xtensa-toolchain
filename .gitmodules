@@ -1,0 +1,3 @@
+[submodule "dist/esptool"]
+	path = dist/esptool
+	url = git://github.com/icamgo/esptool.git
