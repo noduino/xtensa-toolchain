@@ -23,6 +23,7 @@
 import string
 import sys
 import os
+import platform
 import re
 import binascii
 import struct
@@ -134,7 +135,7 @@ def gen_appbin():
     global crc_sum
     global blocks
     if len(sys.argv) != 6:
-        print 'Usage: gen_appbin.py eagle.app.out boot_mode flash_mode flash_clk_div flash_size_map'
+        print 'Usage: gen_appbin.py app.out boot_mode flash_mode flash_clk_div flash_size_map'
         sys.exit(0)
 
     elf_file = sys.argv[1]
@@ -146,11 +147,11 @@ def gen_appbin():
     flash_data_line  = 16
     data_line_bits = 0xf
 
-    irom0text_bin_name = 'eagle.app.v6.irom0text.bin'
-    text_bin_name = 'eagle.app.v6.text.bin'
-    data_bin_name = 'eagle.app.v6.data.bin'
-    rodata_bin_name = 'eagle.app.v6.rodata.bin'
-    flash_bin_name ='eagle.app.flash.bin'
+    irom0text_bin_name = '.irom0text.bin'
+    text_bin_name = '.text.bin'
+    data_bin_name = '.data.bin'
+    rodata_bin_name = '.rodata.bin'
+    flash_bin_name ='flash.bin'
 
     BIN_MAGIC_FLASH  = 0xE9
     BIN_MAGIC_IROM   = 0xEA
@@ -158,14 +159,14 @@ def gen_appbin():
     sum_size = 0
 
     if os.getenv('XTENSA_CORE') == 'lx106':
-        cmd = 'xt-nm -g ' + elf_file + ' > eagle.app.sym'
+        cmd = 'xt-nm -g ' + elf_file + ' > app.sym'
     else :
 	    cmd = get_nm()
-	    cmd += ' -g ' + elf_file + ' > eagle.app.sym'
+	    cmd += ' -g ' + elf_file + ' > app.sym'
 
     os.system(cmd)
 
-    fp = file('./eagle.app.sym')
+    fp = file('./app.sym')
     if fp is None:
         print "open sym file error\n"
         sys.exit(0)
@@ -286,7 +287,7 @@ def gen_appbin():
             all_bin_crc = abs(all_bin_crc) + 1
         print all_bin_crc
         write_file(flash_bin_name,chr((all_bin_crc & 0x000000FF))+chr((all_bin_crc & 0x0000FF00) >> 8)+chr((all_bin_crc & 0x00FF0000) >> 16)+chr((all_bin_crc & 0xFF000000) >> 24))
-    cmd = 'rm eagle.app.sym'
+    cmd = 'rm app.sym'
     os.system(cmd)
 
 if __name__=='__main__':
