@@ -134,8 +134,8 @@ def gen_appbin():
     global chk_sum
     global crc_sum
     global blocks
-    if len(sys.argv) != 6:
-        print 'Usage: gen_appbin.py app.out boot_mode flash_mode flash_clk_div flash_size_map'
+    if len(sys.argv) != 7:
+        print 'Usage: gen_appbin.py app.out boot_mode flash_mode flash_clk_div flash_size_map user_bin'
         sys.exit(0)
 
     elf_file = sys.argv[1]
@@ -144,14 +144,16 @@ def gen_appbin():
     flash_clk_div = sys.argv[4]
     flash_size_map = sys.argv[5]
 
+    user_bin = sys.argv[6]
     flash_data_line  = 16
     data_line_bits = 0xf
 
-    irom0text_bin_name = '.irom0text.bin'
-    text_bin_name = '.text.bin'
-    data_bin_name = '.data.bin'
-    rodata_bin_name = '.rodata.bin'
-    flash_bin_name ='flash.bin'
+    irom0text_bin_name = '.user' + user_bin + '.irom0text.bin'
+    text_bin_name = '.user' + user_bin + '.text.bin'
+    data_bin_name = '.user' + user_bin + '.data.bin'
+    rodata_bin_name = '.user' + user_bin + '.rodata.bin'
+    flash_bin_name = '.user' + user_bin + '.bin'
+    boot_name = '.boothead.bin'
 
     BIN_MAGIC_FLASH  = 0xE9
     BIN_MAGIC_IROM   = 0xEA
@@ -161,8 +163,8 @@ def gen_appbin():
     if os.getenv('XTENSA_CORE') == 'lx106':
         cmd = 'xt-nm -g ' + elf_file + ' > app.sym'
     else :
-	    cmd = get_nm()
-	    cmd += ' -g ' + elf_file + ' > app.sym'
+        cmd = get_nm()
+        cmd += ' -g ' + elf_file + ' > app.sym'
 
     os.system(cmd)
 
@@ -232,16 +234,29 @@ def gen_appbin():
     byte2=int(flash_mode)&0xff
     byte3=(((int(flash_size_map)<<4)| int(flash_clk_div))&0xff)
 	
+    app=int(user_bin)&0xff
+    if boot_mode == '9':
+        data_bin = struct.pack('<BBBB',BIN_MAGIC_FLASH,3,byte2,byte3)
+        write_file(boot_name, data_bin)
+        cmd = 'rm app.sym'
+        os.system(cmd)
+        sys.exit(0)
+
     if boot_mode == '2':
         # write irom bin head
-        data_bin = struct.pack('<BBBBI',BIN_MAGIC_IROM,4,byte2,byte3,long(entry_addr,16))
+        #data_bin = struct.pack('<BBBBI',BIN_MAGIC_IROM,4,byte2,byte3,long(entry_addr,16))
+        data_bin = struct.pack('<BBBBI',BIN_MAGIC_IROM,4,0,app,long(entry_addr,16))
         sum_size = len(data_bin)
         write_file(flash_bin_name,data_bin)
         
         # irom0.text.bin
         combine_bin(irom0text_bin_name,flash_bin_name,0x0,0)
 
-    data_bin = struct.pack('<BBBBI',BIN_MAGIC_FLASH,3,byte2,byte3,long(entry_addr,16))
+    if boot_mode == '1':
+        data_bin = struct.pack('<BBBBI',BIN_MAGIC_FLASH,3,0,app,long(entry_addr,16))
+    else:
+        data_bin = struct.pack('<BBBBI',BIN_MAGIC_FLASH,3,byte2,byte3,long(entry_addr,16))
+        
     sum_size = len(data_bin)
     write_file(flash_bin_name,data_bin)
 
@@ -289,6 +304,7 @@ def gen_appbin():
         write_file(flash_bin_name,chr((all_bin_crc & 0x000000FF))+chr((all_bin_crc & 0x0000FF00) >> 8)+chr((all_bin_crc & 0x00FF0000) >> 16)+chr((all_bin_crc & 0xFF000000) >> 24))
     cmd = 'rm app.sym'
     os.system(cmd)
+    
 
 if __name__=='__main__':
     gen_appbin()
