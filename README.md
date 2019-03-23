@@ -24,6 +24,15 @@ $ make osx						# build the toolchain used in Mac OS X
 
 For windows:
 
+Install the following tools:
+
+* [Git for windows](https://git-for-windows.github.io/)
+* [mingw32-make](http://sourceforge.net/projects/mingw/files/MinGW/Extension/make/make-3.82.90-cvs/make-3.82.90-2-mingw32-cvs-20120902-bin.tar.lzma/download)
+* [Python 2.7](https://www.python.org/ftp/python/2.7/python-2.7.msi)
+
+
+Then:
+
 ```
 $ git clone git://github.com/icamgo/xtensa-toolchain.git xtensa-toolchain
 $ cd xtensa-toolchain
