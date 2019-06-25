@@ -1,71 +1,13 @@
 {
   "packages": [
     {
-      "name": "esp8266",
+      "name": "ESP8266 Toolchain",
       "maintainer": "ESP8266 Community",
       "websiteURL": "https://github.com/esp8266/Arduino",
       "email": "ivan@esp8266.com",
       "help": {
         "online": "http://esp8266.com/arduino"
       },
-      "platforms": [
-        {
-          "name": "esp8266",
-          "architecture": "esp8266",
-          "version": "",
-          "category": "ESP8266",
-          "url": "",
-          "archiveFileName": "",
-          "checksum": "",
-          "size": "",
-          "help": {
-            "online": ""
-          },
-          "boards": [
-            {
-              "name": "Noduino Falcon"
-            },
-            {
-              "name": "NodeMCU 1.0 (ESP-12E Module)"
-            },
-            {
-              "name": "Generic ESP8266 Module"
-            },
-            {
-              "name": "Olimex MOD-WIFI-ESP8266(-DEV)"
-            },
-            {
-              "name": "NodeMCU 0.9 (ESP-12 Module)"
-            },
-            {
-              "name": "Adafruit HUZZAH ESP8266 (ESP-12)"
-            },
-            {
-              "name": "SparkFun Thing"
-            },
-            {
-              "name": "SweetPea ESP-210"
-            }
-          ],
-          "toolsDependencies": [
-            {
-              "packager": "esp8266",
-              "name": "esptool",
-              "version": "0.4.6"
-            },
-            {
-              "packager": "esp8266",
-              "name": "xtensa-lx106-elf-gcc",
-              "version": "1.20.0-26-gb404fb9-2"
-            },
-            {
-              "packager": "esp8266",
-              "name": "mkspiffs",
-              "version": "0.1.2"
-            }
-          ]
-        }
-      ],
       "tools": [
         {
           "name": "esptool",
@@ -191,6 +133,44 @@
           ]
         }
       ]
-    }
+    },
+	{
+      "name": "GNU Arm Embedded Toolchain",
+      "maintainer": "GCC Arm Embedded Community",
+      "websiteURL": "https://launchpad.net/gcc-arm-embedded/+download",
+      "email": "team-gcc-arm-embedded@lists.launchpad.net ",
+      "help": {
+        "online": "https://launchpad.net/gcc-arm-embedded"
+      },
+      "tools": [
+        {
+          "name": "arm-none-eabi-gcc",
+          "version": "4.9-2015q3",
+          "systems": [
+            {
+              "host": "i686-mingw32",
+              "url": "https://launchpad.net/gcc-arm-embedded/4.9/4.9-2015-q3-update/+download/gcc-arm-none-eabi-4_9-2015q3-20150921-win32.zip",
+              "archiveFileName": "gcc-arm-none-eabi-4_9-2015q3-20150921-win32.zip",
+              "checksum": "SHA-256:9ada30aefdf6e058cd4958988ce70f3e4c408a2edbb00c0adab25c8e75cf4c20",
+              "size": "98465351"
+            },
+            {
+              "host": "i686-pc-linux-gnu",
+              "url": "https://launchpad.net/gcc-arm-embedded/4.9/4.9-2015-q3-update/+download/gcc-arm-none-eabi-4_9-2015q3-20150921-linux.tar.bz2",
+              "archiveFileName": "gcc-arm-none-eabi-4_9-2015q3-20150921-linux.tar.bz2",
+              "checksum": "SHA-256:c50078bfbd29e6c15615900e746f4d0acde917338e55860b0f145f57387c12ab",
+              "size": "73710332"
+            },
+            {
+              "host": "i686-apple-darwin",
+              "url": "https://launchpad.net/gcc-arm-embedded/4.9/4.9-2015-q3-update/+download/gcc-arm-none-eabi-4_9-2015q3-20150921-mac.tar.bz2",
+              "archiveFileName": "gcc-arm-none-eabi-4_9-2015q3-20150921-mac.tar.bz2",
+              "checksum": "SHA-256:a6353db31face60c2091c2c84c902fc4d566decd1aa04884cd822c383d13c9fa",
+              "size": "77455989"
+            }
+          ]
+	    }
+	  ]
+	}
   ]
 }
