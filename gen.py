@@ -42,33 +42,35 @@ def report_progress(count, blockSize, totalSize):
 def unpack(filename, destination, arch):
 	dirname = ''
 	print('Extracting {0}'.format(filename))
+
 	if filename.endswith('tar.gz'):
 		tfile = tarfile.open(filename, 'r:gz')
 		tfile.extractall(destination)
 		dirname= tfile.getnames()[0]
 	elif filename.endswith('zip'):
+                if arch == 'opencpu':
+                    destination = 'arm-none-eabi-opencpu'
 		zfile = zipfile.ZipFile(filename)
-		if arch == 'opencpu':
-			destination = 'arm-none-eabi'
-		elif arch == 'avr':
-			print("avr...")
-			
 		dirname = zfile.namelist()[0].split('/')[0]
 		zfile.extractall(destination)
 	elif filename.endswith('tar.bz2'):
 		tfile = tarfile.open(filename, 'r:bz2')
 		tfile.extractall(destination)
-		dirname= tfile.getnames()[0]
+		dirname= tfile.getnames()[0].split('/')[0]
 	else:
 		raise NotImplementedError('Unsupported archive type')
 
 	# a little trick to rename tool directories so they don't contain version number
-	rename_to = re.match(r'^([a-z][^\-]*\-*)+', dirname).group(0).encode('ascii').strip('-')
+        if arch == 'opencpu':
+            rename_to = 'arm-none-eabi-opencpu'
+        else:
+            rename_to = re.match(r'^([a-z][^\-]*\-*)+', dirname).group(0).encode('ascii').strip('-')
+
 	if rename_to != dirname:
-		print('Renaming {0} to {1}'.format(dirname, rename_to))
-		if os.path.isdir(rename_to):
-			shutil.rmtree(rename_to)
-		shutil.move(dirname, rename_to)
+	    print('Renaming {0} to {1}'.format(dirname, rename_to))
+	    if os.path.isdir(rename_to):
+		shutil.rmtree(rename_to)
+	    shutil.move(dirname, rename_to)
 
 def get_tool(tool, arch):
 	archive_name = tool['archiveFileName']
@@ -144,7 +146,7 @@ if __name__ == '__main__':
 		print("Generate the toolchain of the OpenCPU...")
 		for tool in tools_to_download:
 			get_tool(tool, arch)
-	if arch == 'efm32':
+	elif arch == 'efm32':
 		print("Generate the toolchain of the EFM32...")
 		for tool in tools_to_download:
 			get_tool(tool, arch)
@@ -153,20 +155,15 @@ if __name__ == '__main__':
 		for tool in tools_to_download:
 			get_tool(tool, arch)
 	else:
-		for tool in tools_to_download:
-			get_tool(tool, arch)
-
-		if os.path.isfile('esptool/esptool'):
-			move_p('esptool/esptool', 'bin/')
-
-		if os.path.isfile('esptool/esptool.exe'):
-			move_p('esptool/esptool.exe', 'bin/')
-
-		if os.path.isfile('mkspiffs/mkspiffs'):
-			move_p('mkspiffs/mkspiffs', 'bin/')
-
-		if os.path.isfile('mkspiffs/mkspiffs.exe'):
-			move_p('mkspiffs/mkspiffs.exe', 'bin/')
-
-                shutil.rmtree('mkspiffs/')
-                shutil.rmtree('esptool/')
+            for tool in tools_to_download:
+                get_tool(tool, arch)
+            if os.path.isfile('esptool/esptool'):
+                move_p('esptool/esptool', 'bin/')
+            if os.path.isfile('esptool/esptool.exe'):
+                move_p('esptool/esptool.exe', 'bin/')
+            if os.path.isfile('mkspiffs/mkspiffs'):
+                move_p('mkspiffs/mkspiffs', 'bin/')
+            if os.path.isfile('mkspiffs/mkspiffs.exe'):
+                move_p('mkspiffs/mkspiffs.exe', 'bin/')
+            shutil.rmtree('mkspiffs/')
+            shutil.rmtree('esptool/')
