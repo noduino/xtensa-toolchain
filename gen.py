@@ -55,6 +55,10 @@ def unpack(filename, destination, arch):
 			
 		dirname = zfile.namelist()[0].split('/')[0]
 		zfile.extractall(destination)
+	elif filename.endswith('tar.bz2'):
+		tfile = tarfile.open(filename, 'r:bz2')
+		tfile.extractall(destination)
+		dirname= tfile.getnames()[0]
 	else:
 		raise NotImplementedError('Unsupported archive type')
 
@@ -90,6 +94,8 @@ def load_tools_list(filename, platform, arch):
 		tools_info = json.load(open(filename))['packages'][1]['tools']
 	elif arch == 'avr':
 		tools_info = json.load(open(filename))['packages'][2]['tools']
+	elif arch == 'efm32':
+		tools_info = json.load(open(filename))['packages'][3]['tools']
 	elif arch == 'esp8266' or arch == 'esp32':
 		tools_info = json.load(open(filename))['packages'][0]['tools']
 	else:
@@ -138,6 +144,10 @@ if __name__ == '__main__':
 		print("Generate the toolchain of the OpenCPU...")
 		for tool in tools_to_download:
 			get_tool(tool, arch)
+	if arch == 'efm32':
+		print("Generate the toolchain of the EFM32...")
+		for tool in tools_to_download:
+			get_tool(tool, arch)
 	elif arch == 'avr':
 		print("Generate the toolchain of the AVR...")
 		for tool in tools_to_download:
@@ -158,5 +168,5 @@ if __name__ == '__main__':
 		if os.path.isfile('mkspiffs/mkspiffs.exe'):
 			move_p('mkspiffs/mkspiffs.exe', 'bin/')
 
-		shutil.rmtree('mkspiffs/')
-		shutil.rmtree('esptool/')
+                shutil.rmtree('mkspiffs/')
+                shutil.rmtree('esptool/')

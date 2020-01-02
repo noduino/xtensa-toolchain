@@ -135,7 +135,7 @@
       ]
     },
 	{
-      "name": "GNU Arm Embedded Toolchain",
+      "name": "GNU Arm Embedded Toolchain (OpenCPU)",
       "maintainer": "GCC Arm Embedded Community",
       "websiteURL": "https://launchpad.net/gcc-arm-embedded/+download",
       "email": "team-gcc-arm-embedded@lists.launchpad.net ",
@@ -162,38 +162,25 @@
               "size": "73710332"
             },
             {
+              "host": "x86_64-pc-linux-gnu",
+              "url": "https://launchpad.net/gcc-arm-embedded/4.9/4.9-2015-q3-update/+download/gcc-arm-none-eabi-4_9-2015q3-20150921-linux.tar.bz2",
+              "archiveFileName": "gcc-arm-none-eabi-4_9-2015q3-20150921-linux.tar.bz2",
+              "checksum": "SHA-256:c50078bfbd29e6c15615900e746f4d0acde917338e55860b0f145f57387c12ab",
+              "size": "73710332"
+            },
+            {
               "host": "i686-apple-darwin",
               "url": "https://launchpad.net/gcc-arm-embedded/4.9/4.9-2015-q3-update/+download/gcc-arm-none-eabi-4_9-2015q3-20150921-mac.tar.bz2",
               "archiveFileName": "gcc-arm-none-eabi-4_9-2015q3-20150921-mac.tar.bz2",
               "checksum": "SHA-256:a6353db31face60c2091c2c84c902fc4d566decd1aa04884cd822c383d13c9fa",
               "size": "77455989"
-            }
-          ]
-	    },
-        {
-          "name": "arm-none-eabi-gcc",
-          "version": "4.9-2017q2",
-          "systems": [
-            {
-              "host": "i686-mingw32",
-			  "url": "https://armkeil.blob.core.windows.net/developer/Files/downloads/gnu-rm/7-2017q4/gcc-arm-none-eabi-7-2017-q4-major-win32.zip",
-              "archiveFileName": "gcc-arm-none-eabi-7-2017-q4-major-win32.zip",
-              "checksum": "SHA-256:ffafad128c9a8e2fe8023ff41ebc9a6ca9503dbe01d871dd07c68e2ba40b9b3f",
-              "size": "129718905"
             },
             {
-              "host": "i686-pc-linux-gnu",
-			  "url": "https://armkeil.blob.core.windows.net/developer/Files/downloads/gnu-rm/7-2017q4/gcc-arm-none-eabi-7-2017-q4-major-linux.tar.bz2",
-              "archiveFileName": "gcc-arm-none-eabi-7-2017-q4-major-linux.tar.bz2",
-              "checksum": "SHA-256:96a029e2ae130a1210eaa69e309ea40463028eab18ba19c1086e4c2dafe69a6a",
-              "size": "99857645"
-            },
-            {
-              "host": "i686-apple-darwin",
-			  "url": "https://armkeil.blob.core.windows.net/developer/Files/downloads/gnu-rm/7-2017q4/gcc-arm-none-eabi-7-2017-q4-major-mac.tar.bz2",
-              "archiveFileName": "gcc-arm-none-eabi-7-2017-q4-major-mac.tar.bz2",
-              "checksum": "SHA-256:89b776c7cf0591c810b5b60067e4dc113b5b71bc50084a536e71b894a97fdccb",
-              "size": "104550003"
+              "host": "x86_64-apple-darwin",
+              "url": "https://launchpad.net/gcc-arm-embedded/4.9/4.9-2015-q3-update/+download/gcc-arm-none-eabi-4_9-2015q3-20150921-mac.tar.bz2",
+              "archiveFileName": "gcc-arm-none-eabi-4_9-2015q3-20150921-mac.tar.bz2",
+              "checksum": "SHA-256:a6353db31face60c2091c2c84c902fc4d566decd1aa04884cd822c383d13c9fa",
+              "size": "77455989"
             }
           ]
 	    }
@@ -218,6 +205,58 @@
               "archiveFileName": "avr-gcc-5.4.0-atmel3.6.1-win32.zip",
               "checksum": "SHA-256:fc901f6567b68054482a818e5c50f02bfdff646a9da943d6ad55806fe2202f1a",
               "size": "49749881"
+            }
+          ]
+	    }
+	  ]
+	},
+	{
+      "name": "GNU Arm Embedded Toolchain (EFM32)",
+      "maintainer": "GCC Arm Embedded Community",
+      "websiteURL": "https://launchpad.net/gcc-arm-embedded/+download",
+      "email": "team-gcc-arm-embedded@lists.launchpad.net ",
+      "help": {
+        "online": "https://launchpad.net/gcc-arm-embedded"
+      },
+      "tools": [
+        {
+          "name": "arm-none-eabi-gcc",
+          "version": "4.9-2017q2",
+          "systems": [
+            {
+              "host": "i686-mingw32",
+			  "url": "https://armkeil.blob.core.windows.net/developer/Files/downloads/gnu-rm/7-2017q4/gcc-arm-none-eabi-7-2017-q4-major-win32.zip",
+              "archiveFileName": "gcc-arm-none-eabi-7-2017-q4-major-win32.zip",
+              "checksum": "SHA-256:ffafad128c9a8e2fe8023ff41ebc9a6ca9503dbe01d871dd07c68e2ba40b9b3f",
+              "size": "129718905"
+            },
+            {
+              "host": "i686-pc-linux-gnu",
+			  "url": "https://armkeil.blob.core.windows.net/developer/Files/downloads/gnu-rm/7-2017q4/gcc-arm-none-eabi-7-2017-q4-major-linux.tar.bz2",
+              "archiveFileName": "gcc-arm-none-eabi-7-2017-q4-major-linux.tar.bz2",
+              "checksum": "SHA-256:96a029e2ae130a1210eaa69e309ea40463028eab18ba19c1086e4c2dafe69a6a",
+              "size": "99857645"
+            },
+            {
+              "host": "x86_64-pc-linux-gnu",
+			  "url": "https://armkeil.blob.core.windows.net/developer/Files/downloads/gnu-rm/7-2017q4/gcc-arm-none-eabi-7-2017-q4-major-linux.tar.bz2",
+              "archiveFileName": "gcc-arm-none-eabi-7-2017-q4-major-linux.tar.bz2",
+              "checksum": "SHA-256:96a029e2ae130a1210eaa69e309ea40463028eab18ba19c1086e4c2dafe69a6a",
+              "size": "99857645"
+            },
+            {
+              "host": "i686-apple-darwin",
+			  "url": "https://armkeil.blob.core.windows.net/developer/Files/downloads/gnu-rm/7-2017q4/gcc-arm-none-eabi-7-2017-q4-major-mac.tar.bz2",
+              "archiveFileName": "gcc-arm-none-eabi-7-2017-q4-major-mac.tar.bz2",
+              "checksum": "SHA-256:89b776c7cf0591c810b5b60067e4dc113b5b71bc50084a536e71b894a97fdccb",
+              "size": "104550003"
+            },
+            {
+              "host": "x86_64-apple-darwin",
+			  "url": "https://armkeil.blob.core.windows.net/developer/Files/downloads/gnu-rm/7-2017q4/gcc-arm-none-eabi-7-2017-q4-major-mac.tar.bz2",
+              "archiveFileName": "gcc-arm-none-eabi-7-2017-q4-major-mac.tar.bz2",
+              "checksum": "SHA-256:89b776c7cf0591c810b5b60067e4dc113b5b71bc50084a536e71b894a97fdccb",
+              "size": "104550003"
             }
           ]
 	    }
