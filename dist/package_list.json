@@ -259,7 +259,34 @@
               "size": "104550003"
             }
           ]
-	    }
+	    },
+        {
+          "name": "openocd-devel",
+          "version": "0.9.0-20191230",
+          "systems": [
+            {
+              "host": "i686-mingw32",
+              "url": "http://noduino.org/toolchain/openocd-nt-devel-20191230-win32.tar.gz",
+              "archiveFileName": "openocd-nt-devel-20191230-win32.zip",
+              "checksum": "SHA-256:93ce0a0f72e6e78048580fe8a6b6700127ee940963ccd049ff77d93ba380bc4a",
+              "size": "7432688"
+            },
+            {
+              "host": "x86_64-pc-linux-gnu",
+              "url": "http://noduino.org/toolchain/openocd-nt-devel-20191230-linux64.tar.gz",
+              "archiveFileName": "openocd-nt-devel-20191230-linux64.tar.gz",
+              "checksum": "SHA-256:b8f5cd9898ed64186e1dced60bb22f2865d23f5c66ec4708f8177f54a95eb866",
+              "size": "5262919"
+            },
+            {
+              "host": "i686-pc-linux-gnu",
+              "url": "http://noduino.org/toolchain/openocd-nt-devel-20191230-linux32.tar.gz",
+              "archiveFileName": "openocd-nt-devel-20191230-linux32.tar.gz",
+              "checksum": "SHA-256:",
+              "size": ""
+            }
+          ]
+        }
 	  ]
 	}
   ]
