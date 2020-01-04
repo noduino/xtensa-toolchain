@@ -88,7 +88,13 @@ def get_tool(tool, arch):
 	if local_hash != real_hash:
 		print('Hash mismatch for {0}, delete the file and try again'.format(local_path))
 		raise RuntimeError()
-	unpack(local_path, '.', arch)
+
+	if archive_name == 'gcc-arm-none-eabi-7-2017-q4-major-win32.zip':
+		tc_dir = 'gcc-arm-none-eabi';
+		mkdir_p(tc_dir)
+		unpack(local_path, tc_dir, arch)
+	else:
+		unpack(local_path, '.', arch)
 
 def load_tools_list(filename, platform, arch):
 

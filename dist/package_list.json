@@ -267,7 +267,7 @@
             {
               "host": "i686-mingw32",
               "url": "http://noduino.org/toolchain/openocd-nt-devel-20191230-win32.tar.gz",
-              "archiveFileName": "openocd-nt-devel-20191230-win32.zip",
+              "archiveFileName": "openocd-nt-devel-20191230-win32.tar.gz",
               "checksum": "SHA-256:93ce0a0f72e6e78048580fe8a6b6700127ee940963ccd049ff77d93ba380bc4a",
               "size": "7432688"
             },
