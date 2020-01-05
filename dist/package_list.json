@@ -197,7 +197,7 @@
       "tools": [
         {
           "name": "avr-gcc",
-          "version": "5.4.0-atmel3.6.1-arduino2",
+          "version": "5.4.0-atmel3.6.1",
           "systems": [
             {
               "host": "i686-mingw32",
@@ -205,6 +205,34 @@
               "archiveFileName": "avr-gcc-5.4.0-atmel3.6.1-win32.zip",
               "checksum": "SHA-256:fc901f6567b68054482a818e5c50f02bfdff646a9da943d6ad55806fe2202f1a",
               "size": "49749881"
+            },
+            {
+              "host": "i686-pc-linux-gnu",
+              "url": "http://noduino.org/toolchain/avr-gcc-5.4.0-atmel3.6.1-linux32.tar.bz2",
+              "archiveFileName": "avr-gcc-5.4.0-atmel3.6.1-linux32.tar.bz2",
+              "checksum": "SHA-256:b106bdb598b8146104de230a6dbde4ca9c08e811917ceaef0817d3ac35da3cf1",
+              "size": "35364346"
+            },
+            {
+              "host": "x86_64-pc-linux-gnu",
+              "url": "http://noduino.org/toolchain/avr-gcc-5.4.0-atmel3.6.1-linux64.tar.bz2",
+              "archiveFileName": "avr-gcc-5.4.0-atmel3.6.1-linux64.tar.bz2",
+              "checksum": "SHA-256:c1697ef71b08371f0bc2aa664bdee28c64e16c34e46d77ecceb886e30378f388",
+              "size": "36053482"
+            },
+            {
+              "host": "i686-apple-darwin",
+              "url": "http://noduino.org/toolchain/avr-gcc-5.4.0-atmel3.6.1-macosx.tar.bz2",
+              "archiveFileName": "avr-gcc-5.4.0-atmel3.6.1-macosx.tar.bz2",
+              "checksum": "SHA-256:50676b47af4d42c311c5e581b601a159b5162826939a18f74f42ef42c4c1db6f",
+              "size": "38949951"
+            },
+            {
+              "host": "x86_64-apple-darwin",
+              "url": "http://noduino.org/toolchain/avr-gcc-5.4.0-atmel3.6.1-macosx.tar.bz2",
+              "archiveFileName": "avr-gcc-5.4.0-atmel3.6.1-macosx.tar.bz2",
+              "checksum": "SHA-256:50676b47af4d42c311c5e581b601a159b5162826939a18f74f42ef42c4c1db6f",
+              "size": "38949951"
             }
           ]
 	    }
