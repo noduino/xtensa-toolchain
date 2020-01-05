@@ -196,6 +196,26 @@
       },
       "tools": [
         {
+          "name": "avrdude",
+          "version": "5.3.1",
+          "systems": [
+            {
+              "host": "i686-mingw32",
+              "url": "http://noduino.org/toolchain/avrdude-5.3.1-win32.tar.gz",
+              "archiveFileName": "avrdude-5.3.1-win32.tar.gz",
+              "checksum": "SHA-256:5dc489cf8647141c4f7e97625f57ea3d72fea9c663ff09b382d6e03b5d8c11f3",
+              "size": "231608"
+            },
+            {
+              "host": "x86_64-pc-linux-gnu",
+              "url": "http://noduino.org/toolchain/avrdude-6.3-20171130-linux64.tar.bz2",
+              "archiveFileName": "avrdude-6.3-20171130-linux64.tar.bz2",
+              "checksum": "SHA-256:6e5b156bae2224de7f616ba57b918bd12fe4ce9f75336db2f9feea71e5c1f680",
+              "size": "263409"
+            }
+          ]
+        },
+        {
           "name": "avr-gcc",
           "version": "5.4.0-atmel3.6.1",
           "systems": [
